@@ -9,8 +9,12 @@ var Cornerimg;
 
 
 function setup() {
+    pixelDensity(1);
   createCanvas(800,800);
-  Cornerimg = createGraphics(width, height);
+  Cornerimg = createGraphics(width/2, height/2);
+
+  background(100,0,0);
+
 }
 
 function draw() {
@@ -77,20 +81,25 @@ function draw() {
     80, height/2  +103);
 
 
+
 push();
+
+  translate(0,0); // move to far corner
+
   image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
-  translate(Cornerimg.width,0); // move to far corner
+
+  translate(width,0); // move to far corner
+   scale(-1.0,1.0);    // flip x-axis backwards
+   image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
+
+  translate(0,height); // move to far corner
+  scale(1.0,-1.0);    // flip x-axis backwards
+  image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
+
+  translate(width,0); // move to far corner
+
   scale(-1.0,1.0);    // flip x-axis backwards
   image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
-
-  translate(0,Cornerimg.height); // move to far corner
- scale(1.0,-1.0);    // flip x-axis backwards
-image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
-
- translate(width,0); // move to far corner
-
- scale(-1.0,1.0);    // flip x-axis backwards
-image(Cornerimg, 0, 0, width/2, height/2); //video on canvas, position, dimensions
 
 pop();
 
